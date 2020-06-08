@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~8.2.11",
     "@angular/platform-browser-dynamic": "~8.2.11",
     "@angular/router": "~8.2.11",
+    "codelyzer": "^5.2.2",
     "oidc-client": "^1.10.1",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
