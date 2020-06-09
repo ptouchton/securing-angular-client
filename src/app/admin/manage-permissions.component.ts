@@ -87,6 +87,6 @@ export class ManagePermissionsComponent implements OnInit {
   onPermissionChanged(user: any) {
     this._projectService.updateUserPermission(user.permission).subscribe(() => {
 
-    }, error => { this.error = Utils.formatError(error)});
+    }, error => { this.error = Utils.formatError(error);});
   }
 }

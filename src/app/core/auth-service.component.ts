@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserManager, User} from 'oidc-client';
+import { UserManager, User, SignoutResponse} from 'oidc-client';
 import { CoreModule } from './core.module';
 import { Constants } from '../constants';
 import { Subject } from 'rxjs';
@@ -41,5 +41,21 @@ export class AuthService {
      this._user = user;
      return userCurrent;
     }
- 
+
+    async completeLogin(): Promise<User> {
+      const user = await this._userManager.signinRedirectCallback();
+      this._user = user;
+      this._loginChangedSubject.next(!!user && !user.expired);
+      return user;
+    }
+
+    logout(): void {
+      this._userManager.signoutRedirect();
+    }
+
+    completeLogout(): Promise<SignoutResponse> {
+      this._user = null;
+      return this._userManager.signoutRedirectCallback();
+    }
+
 }

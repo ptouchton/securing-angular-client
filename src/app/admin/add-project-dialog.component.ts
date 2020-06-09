@@ -18,7 +18,6 @@ export class AddProjectDialogComponent implements OnInit {
     }
 
     add() {
-        if (this.data.name) { this._dialogRef.close(this.data.name); }
-        else { this.error = "Please enter a name for the project." };
+        if (this.data.name) { this._dialogRef.close(this.data.name); } else { this.error = 'Please enter a name for the project.'; }
     }
 }

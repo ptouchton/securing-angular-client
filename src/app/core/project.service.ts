@@ -13,7 +13,7 @@ import { CoreModule } from './core.module';
 @Injectable({ providedIn: CoreModule})
 export class ProjectService {
     constructor(private _httpClient: HttpClient) { }
-    
+
     getProjects(): Observable<Project[]> {
         return this._httpClient.get<Project[]>(Constants.apiRoot + 'Projects');
     }

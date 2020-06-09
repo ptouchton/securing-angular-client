@@ -16,12 +16,16 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.isLoggedIn().then(loggedIn => {
+    this.authService.loginChanged$.subscribe(loggedIn => {
       this.isLoggedIn = loggedIn;
-    })
+    });
   }
 
-  login() {
+  login(): void {
     this.authService.login();
+  }
+
+  logout(): void {
+    this.authService.logout();
   }
 }

@@ -32,7 +32,7 @@ export class ProjectComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    var projectId = this._route.snapshot.params.projectId;
+    let projectId = this._route.snapshot.params.projectId;
     this._projectService.getMilestoneStatuses().subscribe(ms => {
       this.milestoneStatuses = ms;
     });
@@ -44,7 +44,7 @@ export class ProjectComponent implements OnInit {
   }
 
   addMilestone() {
-    var newMs = new Milestone();
+    let newMs = new Milestone();
     newMs.projectId = this.project.id;
     const dialogRef = this.dialog.open(AddEditMilestoneDialogComponent, {
       width: '348px',
@@ -65,7 +65,7 @@ export class ProjectComponent implements OnInit {
   }
 
   editMilestone(milestone: Milestone) {
-    var clonedMilestone = JSON.parse(JSON.stringify(milestone));
+    let clonedMilestone = JSON.parse(JSON.stringify(milestone));
     const dialogRef = this.dialog.open(AddEditMilestoneDialogComponent, {
         width: '348px',
         data: {
@@ -74,7 +74,7 @@ export class ProjectComponent implements OnInit {
           defaultStatus: this.milestoneStatuses.find(ms => ms.id == milestone.milestoneStatusId)
         }
       });
-      dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {
         if (result !== undefined) {
           this._projectService.updateMilestone(result).subscribe(() => {
             this.ngOnInit();
@@ -88,19 +88,19 @@ export class ProjectComponent implements OnInit {
         width: '348px',
         data: { entityName: 'Milestone', message: `Are you sure you want to delete milestone ${milestone.name}?` }
       });
-      dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {
         if (result !== undefined) {
             this._projectService.deleteMilestone(milestone.id).subscribe(() => {
                 this.ngOnInit();
             }, error => this.error = Utils.formatError(error));
               }
       });
-  
+
     }
 
   getStatusName(id: number) {
-      if (!this.milestoneStatuses) return '';
-      var status = this.milestoneStatuses.find(ms => ms.id == id);
+      if (!this.milestoneStatuses) { return ''; }
+      let status = this.milestoneStatuses.find(ms => ms.id == id);
       return status ? status.name : 'unknown';
   }
 }

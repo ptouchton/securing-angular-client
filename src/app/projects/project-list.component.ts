@@ -6,11 +6,11 @@ import { Utils } from '../core/utils';
 import { Project } from '../model/project';
 
 @Component({
-  selector: "app-projects",
-  templateUrl: "project-list.component.html"
+  selector: 'app-projects',
+  templateUrl: 'project-list.component.html'
 })
 export class ProjectListComponent implements OnInit {
-  displayedColumns = ["name"];
+  displayedColumns = ['name'];
   error: string;
   dataSource = new MatTableDataSource();
   projects: Project[];

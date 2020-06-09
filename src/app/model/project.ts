@@ -1,5 +1,5 @@
-import { Milestone } from "./milestone";
-import { UserPermission } from "./user-permission";
+import { Milestone } from './milestone';
+import { UserPermission } from './user-permission';
 
 export class Project {
     id: number;
