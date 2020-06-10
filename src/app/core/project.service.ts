@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Constants } from '../constants';
@@ -8,11 +8,13 @@ import { Project } from '../model/project';
 import { UserPermission } from '../model/user-permission';
 import { UserProfile } from '../model/user-profile';
 import { CoreModule } from './core.module';
+import { AuthService } from './auth-service.component';
 
 
 @Injectable({ providedIn: CoreModule})
 export class ProjectService {
-    constructor(private _httpClient: HttpClient) { }
+    constructor(private _httpClient: HttpClient,
+                private authService: AuthService) { }
 
     getProjects(): Observable<Project[]> {
         return this._httpClient.get<Project[]>(Constants.apiRoot + 'Projects');

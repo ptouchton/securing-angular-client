@@ -58,4 +58,9 @@ export class AuthService {
       return this._userManager.signoutRedirectCallback();
     }
 
+    async getAccessToken(): Promise<string> {
+      const user = await this._userManager.getUser();
+      return user.access_token;
+    }
+
 }
